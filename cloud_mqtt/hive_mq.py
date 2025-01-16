@@ -1,3 +1,46 @@
+"""
+This script demonstrates the use of the HiveMQ public MQTT broker for publishing and subscribing to messages using the Paho MQTT client library. The script connects to the broker, subscribes to a topic, and publishes data.
+
+1. **Broker Configuration:**
+   - **Broker Address:** `broker.hivemq.com` (HiveMQ public broker).
+   - **Port:** 1883 (default MQTT port).
+   - **Client ID:** A unique identifier for the MQTT client (`clientId-...`).
+
+2. **Receiving Messages:**
+   - The `on_message` callback is triggered whenever a message is received on a subscribed topic.
+   - It prints the topic name and the message payload.
+
+3. **Subscribing to a Topic:**
+   - Subscribes to the topic `"streaming/OMIoT/team/valores_medios"`.
+   - This allows the client to receive messages published to this topic.
+
+4. **Publishing Messages:**
+   - Publishes numbers (`1` to `99`) as strings to the topic `"streaming/OMIoT/team/valores_instantaneos"`.
+   - Uses a loop to send messages at 1-second intervals.
+
+5. **MQTT Client Lifecycle:**
+   - **`connect`:** Connects to the broker.
+   - **`loop_start`:** Starts the MQTT network loop in a separate thread.
+   - **`disconnect`:** Disconnects from the broker after publishing is complete.
+
+6. **Use Case:**
+   - This script can be used for testing MQTT communication or for IoT applications where data is published and subscribed to in real time.
+
+**Dependencies:**
+   - Install the Paho MQTT client library if not already installed:
+     ```bash
+     pip install paho-mqtt
+     ```
+
+**Example Usage:**
+   - Run the script to observe messages being published to and received from the broker.
+   - Use another MQTT client to subscribe to the topics and see the published messages.
+
+**Notes:**
+   - Replace `"clientId-..."` with a unique client ID to avoid connection conflicts.
+   - The HiveMQ public broker is for testing purposes; do not use it for sensitive or critical data.
+"""
+
 #https://www.hivemq.com/public-mqtt-broker/
 
 import paho.mqtt.client as mqtt
